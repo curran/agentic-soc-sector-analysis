@@ -604,3 +604,320 @@ The three CSVs now form a relational competitive-intelligence dataset:
 companies.csv → products.csv → benchmarks.csv
 
 The next analytical step would be to normalize genuinely comparable metrics and build a competitive scorecard that accounts for evidence quality, rather than simply ranking vendors by their published percentages.
+
+
+>Plan a data visualization project around these datasets
+
+# **AI-SOC Market Atlas**
+
+Interactive data visualization project plan · November 19, 2026
+
+**Project concept:** Build an interactive competitive-intelligence application that allows users to explore the AI Security Operations Center market, compare startups with established vendors, investigate product capabilities, and critically evaluate published performance benchmarks.
+
+The central question:
+
+> Which AI-SOC vendors are best positioned to deliver autonomous security operations, and what evidence supports their competitive claims?
+
+The application should be built in **VizHub**, using React, TypeScript, and D3, with the three CSV datasets as its initial data sources.
+
+## **1. What the datasets support**
+
+I inspected the actual CSV files. Together they provide:
+
+# **15**
+
+Companies
+
+Startups, incumbents, and challengers
+
+# **33**
+
+Products
+
+Platforms, agents, and services
+
+# **75**
+
+Benchmark observations
+
+Reported quantitative outcomes
+
+# **17**
+
+Evidence gaps
+
+Explicit missing-benchmark records
+
+There are 92 benchmark records in total: 75 metric observations and 17 research-gap records. Every company has one designated primary AI-SOC offering, alongside additional products where applicable.
+
+The dataset naturally forms a three-level hierarchy:
+
+**companies.csv**
+
+Company identity, financials, positioning
+
+**products.csv**
+
+Capabilities, architecture, deployment, market status
+
+**benchmarks.csv**
+
+Measurements, methodology, evidence and sources
+
+### **Intended audience**
+
+The primary audience is cybersecurity buyers, industry analysts, investors, and security product strategists.
+
+The same application should support two complementary modes: an approachable visual overview for a first-time visitor and a detailed research workspace for someone evaluating specific vendors.
+
+## **2. Proposed application structure**
+
+**AI-SOC Market Atlas**
+
+Conceptual wireframe
+
+Explore
+
+Compare
+
+Benchmarks
+
+Company profiles
+
+## **Who is building the autonomous SOC?**
+
+Explore the market, compare capabilities, and examine the evidence.
+
+## **15**
+
+Vendors
+
+## **33**
+
+Products
+
+## **75**
+
+Metrics
+
+Competitive landscape
+
+AI-native
+
+**7AI · Exaforce**
+
+Prophet · Dropzone · Torq
+
+Established platforms
+
+**Microsoft · CrowdStrike**
+
+Palo Alto · Google · Cisco
+
+Interactive positioning view with selectable vendors, tooltips, and links to product evidence
+
+Capability comparison
+
+| Vendor    | Triage | Investigate | Response |
+| --------- | ------ | ----------- | -------- |
+| 7AI       |        |             |          |
+| Dropzone  |        |             |          |
+| Microsoft |        |             |          |
+
+Illustrative subset of the documented-capability fields. A dash represents unknown, not unsupported.
+
+This is a multipage exploration experience rather than a single dashboard. Each view should answer a distinct question while preserving the user's current filters and vendor selections.
+
+## **3. Core visualization views**
+
+I recommend four primary views, plus an integrated methodology and evidence-quality panel.
+
+[Using great design to reveal P&L insights and enhance profitability](https://images.openai.com/static-rsc-4/q2h_lJBeOGJz5L5mYbTjoRHHaBSie01xsGi6WBQxp1aUrnIPfFrHS81IrOBac-Ih3btZMGzwpzUSq2nildAK_m2kIJkd10OVEDMUkeksNLMNQZCw2kQkoBjdpnKcmfck5ghzP_BXwP-yBevyYZntmNytrSAWhm0W4NzzVwMzEmc?purpose=inline)
+
+**View 1 — Market landscape**
+
+Show the distribution of AI-native companies, established vendors, and challengers; product categories; and optional funding comparisons for private companies.
+
+**Key interaction:** Select a market segment or vendor to filter the entire application.
+
+[MITRE ATT&CK Framework Explained for Solutions Engineers | it-learn.io](https://images.openai.com/static-rsc-4/1s-qrMtru67B8-NjeJxr2hgDjEhScmPt9jmD538gyiRUjXN56AAeDB4HzjCSw-0f-mnYoeTMMoCOAPTfxPtSq2pyz3wh2jXJLZwwsg0FNQK_Hw2YLtkeBJxhA39vlM8JRP_nbNcKyrdmYBuafHWaSwXMBjGPnladkcl0BExxI6g?purpose=inline)
+
+**View 2 — Capability matrix**
+
+Rows represent products, columns represent capabilities. Documented capabilities use filled cells; missing information uses neutral, unfilled cells. Users can switch between primary offerings and all 33 products.
+
+**Key interaction:** Select two to four products and compare their documented functions side by side.
+
+[Forest-style plot | Flourish](https://images.openai.com/static-rsc-4/qM2xTZ3YDJgvtv9aTIiVXZhB_Ag_TvonNrHQEeCvxgg61cZ0GwkWapWCt8aeKWzHXs11bxIBveoZpsBVS_McAuQAqMSv4MUGrthYLOoZdwF1Cu24mDXC47n9kG3qqbUWGK4xgo7Bia_IrOJ6_J-BJ8L24-QCa4K1zxqb1k8UmFY?purpose=inline)
+
+**View 3 — Benchmark explorer**
+
+Group observations into performance, automation, quality, response, productivity, cost, and other metric categories. Use dot plots or range plots only for measurements with compatible units and definitions.
+
+**Key interaction:** Select an observation to inspect its baseline, sample, methodology, source, and comparability limitations.
+
+[Top 7 Klue Alternatives for Competitive Intelligence](https://images.openai.com/static-rsc-4/1hkvZPGw-6aLoKhTSQ56hAtaE1qcM-u-e1Cz76G6QH8nJ0K1ttQTbV3PPw0Zve2Z767435G-uaZP-SOEw_2dRLsyIhnu7kf8JnbcneyOXWslQgpu9tsdkUhl2AWcCWTexdsV1fs4KnbzN5LZ5bE8YChDvUYn6oBh5vYMckJf_UQ?purpose=inline)
+
+**View 4 — Vendor profile**
+
+Combine identity, ownership, funding, strategic positioning, product hierarchy, documented capabilities, and benchmark evidence into one research page.
+
+**Key interaction:** Follow a specific product to its benchmark evidence or add it to the comparison workspace.
+
+### **Benchmark exploration deserves special attention**
+
+A particularly important finding from the data inspection is that the 75 benchmark observations contain **71 distinct metric names**. Only 16 of the 33 products have at least one quantitative benchmark observation.
+
+Consequently, plotting all benchmark percentages in a common vendor-ranking bar chart would be misleading.
+
+Instead, I propose a benchmark explorer with two modes:
+
+**Evidence gallery:** Browse all published measurements as individually labeled observations, with their original source and context.
+
+**Comparable measurements:** Display a shared quantitative axis only when metric definitions, units, workloads, and baselines are sufficiently compatible.
+
+The first mode will be useful immediately. The second will become more valuable as the research dataset matures.
+
+## **4. Interaction design**
+
+The experience should be driven by coordinated exploration.
+
+Example interactive comparison workflow
+
+Select vendors (up to four)
+
+7AI
+
+Exaforce
+
+Prophet Security
+
+Dropzone AI
+
+Torq
+
+Microsoft
+
+CrowdStrike
+
+Palo Alto Networks
+
+CapabilitiesBenchmarksCompany
+
+Comparison selection preview
+
+2 vendors selected
+
+7AI · CrowdStrike
+
+Compare documented product functions and unknowns.
+
+Explore selected comparison This illustrates the intended multiselection workflow. The full application would implement coordinated charts, not just the selection controls shown here.
+
+Within the finished application, selecting a vendor in the market landscape would highlight its products in the capability matrix, filter relevant evidence in the benchmark explorer, and update the profile panel. Selections should persist through URL query parameters for sharing.
+
+## **5. Evidence quality as a first-class visual dimension**
+
+The most important design decision is to **separate product claims from verified product performance**.
+
+The current dataset has notable limitations:
+
+| Field                                                  | Current coverage | Visualization implication                              |
+| ------------------------------------------------------ | ---------------- | ------------------------------------------------------ |
+| Quantitative benchmark observations                    | 75               | Show with source and methodological context            |
+| Benchmark observations with sample size populated      | 6 of 75          | Highlight limitations in statistical interpretation    |
+| Benchmark observations with publication date populated | 7 of 75          | Use verification date separately from publication date |
+| Product pricing model populated                        | 1 of 33          | Do not build a meaningful pricing leaderboard yet      |
+| Published connector counts populated                   | 0 of 33          | Avoid integration-count rankings                       |
+| Deployment time populated                              | 0 of 33          | Treat deployment speed as a research gap               |
+| Capability fields                                      | Partial          | Distinguish documented from unknown                    |
+
+Source types are predominantly vendor case studies, claims, or vendor-associated evaluations. That does not invalidate them, but it limits how strongly they support cross-vendor conclusions.
+
+The application should include a visible evidence-quality filter, source links on every benchmark, and explicit methodological warnings for noncomparable measurements.
+
+For the capability matrix, use the actual CSV values dynamically. In the illustrative wireframe above, the response-orchestration cells for 7AI and Microsoft should be marked documented; Dropzone's primary offering has a blank value for that field.
+
+## **6. Technical implementation**
+
+I propose a small, client-side VizHub application without a dedicated backend initially.
+
+**3 static CSV datasets**
+
+**Typed data loading and validation**
+
+Parse CSV · Validate IDs · Preserve missing values
+
+**Normalized client-side data model**
+
+Companies → Products → Benchmarks
+
+**React + TypeScript + D3**
+
+Coordinated views · Cross-filtering · Shared selections
+
+**Published VizHub visualization**
+
+Responsive · Shareable · Embeddable
+
+D3 would handle chart scales, layouts, and SVG rendering primitives. React would manage filters, state, selections, detail panels, and accessibility. The datasets are small enough to load entirely in memory.
+
+I would derive a small number of metrics at runtime, such as the count of documented capabilities, products with quantitative evidence, benchmark observations by source type, and research completeness. These must be presented as *documentation or evidence coverage*, not as objective product-quality scores.
+
+### **Visual design direction**
+
+A clean, editorial data-journalism aesthetic would suit this subject: light background, dark typography, restrained teal and blue accents, and amber for evidence uncertainty.
+
+The application should prioritize legible labels, high-information-density tables, subtle hover interactions, and responsive layouts. Avoid cybersecurity-themed neon effects or animated network backgrounds that compete with the data.
+
+## **7. Incremental implementation plan**
+
+I recommend five independently reviewable PR-sized workstreams.
+
+| Phase                         | Deliverable                                                                                  | Acceptance criteria                                                                                                          |
+| ----------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **PR1 — Data foundation**     | CSV ingestion, typed schemas, relationship validation, normalized selectors, sample fixtures | All 15 company IDs, 33 product IDs, and 92 benchmark references validate. Missing data and numeric qualifiers are preserved. |
+| **PR2 — Market landscape**    | Overview, vendor segmentation, product composition, interactive company selector             | All companies represented; filters and selections work across desktop and mobile                                             |
+| **PR3 — Capability explorer** | Product capability heatmap, hierarchy expansion, multivendor comparison                      | Unknowns are never presented as unsupported; primary and child products remain distinct                                      |
+| **PR4 — Benchmark explorer**  | Metric-family filters, dot/range plots, evidence details, source drilldown                   | Heterogeneous measurements cannot accidentally be ranked on one quantitative scale                                           |
+| **PR5 — Profiles and polish** | Vendor profiles, URL state, evidence panel, accessibility, responsive testing, publication   | Complete navigation, keyboard accessibility, validated source links, and usable mobile layouts                               |
+
+Each PR should target the main branch directly, with appropriate unit tests for transformation logic and browser-level tests for critical interactions.
+
+## **8. Suggested scope for the first release**
+
+## **MVP: The AI-SOC competitive landscape**
+
+The first release should prioritize useful analysis over feature breadth.
+
+Market overview and company segmentation
+
+Product capability heatmap
+
+Vendor comparison (up to four)
+
+Benchmark evidence explorer
+
+Company/product detail panels
+
+Evidence provenance and missingness
+
+Competitive scoring and weighted rankings
+
+Historical market trends
+
+Automated data refresh and enrichment
+
+Generate specification for selected scope&#x20;
+
+A composite competitive score and longitudinal trends should remain future work. The existing dataset does not yet have enough standardized benchmarks, reliable deployment economics, or dated historical snapshots to support those responsibly.
+
+## **9. What would make this project distinctive?**
+
+The differentiating feature should be **claim-to-evidence exploration**.
+
+A visitor could start with an assertion such as "AI-native vendors deliver faster investigations," select a company, see its supporting performance claim, follow it to the original case study, inspect the test population and baseline, and decide how much confidence to place in it.
+
+This transforms the visualization from a vendor directory into a transparent research tool.
+
+**Recommended final deliverable:** A polished, public-facing VizHub application called *AI-SOC Market Atlas*, with an interactive competitive landscape, capability comparisons, benchmark evidence explorer, and individual company profiles. The initial release should focus on making the existing evidence accessible and trustworthy, not on declaring a winner.
