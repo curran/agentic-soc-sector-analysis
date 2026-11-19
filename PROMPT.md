@@ -512,3 +512,49 @@ This file is ready to serve as the company dimension for a future `products.csv`
 
 >build out products.csv
 
+Created `products.csv`, linked to the existing `companies.csv`.
+
+**products.csv**
+
+CSV · 33.8 KB · November 19, 2026
+
+# **33**
+
+Products
+
+# **15**
+
+Companies
+
+# **47**
+
+Columns
+
+Download products.csv
+
+### **What's included**
+
+Each product has structured information covering:
+
+- **Identity:** Product ID, company ID, product family, parent product, and category.
+- **Architecture:** Deployment model, data architecture, integration strategy, and security data sources.
+- **Capabilities:** 12 indicators including autonomous investigation, threat hunting, detection engineering, response automation, forensics, and governance.
+- **Competitive positioning:** Value proposition, differentiation, limitations, and target buyers.
+- **Research quality:** Product availability, source URLs, evidence classification, and verification date.
+
+The dataset distinguishes primary AI-SOC platforms from their constituent agents and supporting products. For example, Prophet's SOC Analyst, Threat Hunter, and Detection Engineer are separate records; Microsoft's preview triage agent is distinguished from Security Copilot.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.prophetsecurity.ai\&sz=32)
+
+Prophet Security+2
+
+
+
+**Data-quality safeguards:** Missing capabilities are not treated as unsupported, marketing claims are not presented as independently validated performance, and announced products are distinguished from verified generally available offerings.
+
+I also validated that all 33 product IDs are unique, all 15 company IDs match `companies.csv`, and the product-family relationships resolve correctly.
+
+The two CSVs now provide a foundation for a competitive intelligence dataset. The next logical addition is `benchmarks.csv`, containing independently comparable measurements of investigation accuracy, autonomous resolution, response time, and cost.
+
+
+>build out benchmarks.csv
