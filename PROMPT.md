@@ -558,3 +558,49 @@ The two CSVs now provide a foundation for a competitive intelligence dataset. Th
 
 
 >build out benchmarks.csv
+
+Created benchmarks.csv and linked it to the existing companies.csv and products.csv datasets.
+benchmarks.csv
+
+54.7 KB · 37 columns · Verified November 19, 2026
+
+
+75
+Metric records
+
+
+15
+Companies
+
+
+33
+Products covered
+
+
+
+Download benchmarks.csv
+
+What's included
+The CSV contains 92 records: 75 quantitative observations and 17 explicit research-gap records.
+
+Metrics include investigation time, automation rates, verdict accuracy, false-positive reduction, response time, analyst-hours saved, throughput, and operational costs.
+
+A few examples from the source material:
+Vendor	Reported outcome	Evidence
+Dropzone AI	45–61% faster investigations in two scenarios	Vendor-commissioned CSA study  Dropzone AI
+Prophet Security	91.9% of investigations resolved automatically in one deployment	Customer case study  Prophet Security
+CrowdStrike	Greater than 98% agreement with expert triage decisions	Vendor benchmark  CrowdStrike.com
+Splunk	Average handling time fell from 15.4 to 5.6 minutes	Internal SOC evaluation  Splunk
+Exaforce	95% reduction in mean investigation time	Vendor-reported aggregate  Exaforce
+
+These measurements are not directly comparable because their workloads, baselines, denominators, and evaluation methods differ.
+Data integrity
+Every record uses the existing company_id and product_id keys. The dataset also records evaluation context, sample size when disclosed, baseline values, measurement units, source URLs, and evidence independence.
+
+Quantitative evidence was found for products belonging to 14 of the 15 companies. Cribl and several individual product offerings have research-gap records rather than invented performance figures.
+
+The three CSVs now form a relational competitive-intelligence dataset:
+
+companies.csv → products.csv → benchmarks.csv
+
+The next analytical step would be to normalize genuinely comparable metrics and build a competitive scorecard that accounts for evidence quality, rather than simply ranking vendors by their published percentages.
